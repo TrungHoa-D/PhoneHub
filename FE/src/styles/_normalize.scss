@@ -1,0 +1,47 @@
+@use 'variables' as *;
+
+html {
+  -webkit-text-size-adjust: 100%; /* 2 */
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+img {
+  border-style: none;
+}
+
+a {
+  color: #000;
+  text-decoration: none;
+}
+
+button {
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+input {
+  outline: none;
+}
+
+body {
+  background: #fff;
+  font-size: 14px;
+  line-height: 1.5;
+  color: $text-color;
+  margin: 0 auto;
+  font-family: $text-font;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  position: relative;
+  min-height: 100%;
+}
+#app {
+  height: 100vh;
+}
