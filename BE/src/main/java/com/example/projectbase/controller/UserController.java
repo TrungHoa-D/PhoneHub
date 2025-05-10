@@ -26,14 +26,14 @@ public class UserController {
   private final UserService userService;
 
   @Tag(name = "user-controller-admin")
-  @Operation(summary = "API get user",hidden = true)
+  @Operation(summary = "API get user")
   @GetMapping(UrlConstant.User.GET_USER)
   public ResponseEntity<?> getUserById(@PathVariable String userId) {
     return VsResponseUtil.success(userService.getUserById(userId));
   }
 
   @Tags({@Tag(name = "user-controller-admin"), @Tag(name = "user-controller")})
-  @Operation(summary = "API get current user login",hidden = true)
+  @Operation(summary = "API get current user login")
   @GetMapping(UrlConstant.User.GET_CURRENT_USER)
   public ResponseEntity<?> getCurrentUser(@Parameter(name = "principal", hidden = true)
                                           @CurrentUser UserPrincipal principal) {
@@ -41,7 +41,7 @@ public class UserController {
   }
 
   @Tag(name = "user-controller-admin")
-  @Operation(summary = "API get all customer",hidden = true)
+  @Operation(summary = "API get all customer")
   @GetMapping(UrlConstant.User.GET_USERS)
   public ResponseEntity<?> getCustomers(@Valid @ParameterObject PaginationFullRequestDto requestDTO) {
     return VsResponseUtil.success(userService.getCustomers(requestDTO));
