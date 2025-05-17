@@ -23,7 +23,8 @@ public class UrlConstant {
 
   public static class Phone {
     private static final String PRE_FIX = "/phone";
-    public static final String CREATE_PHONE = PRE_FIX;
+    private static final String AUTH = "/admin";
+    public static final String CREATE_PHONE = AUTH + PRE_FIX;
     public static final String GET_ALL_PHONE = PRE_FIX;
     public static final String GET_FILTERED_PHONE = PRE_FIX + "/filtered";
     public static final String GET_PHONE_BY_BRAND = PRE_FIX+ "/brand";
@@ -33,8 +34,8 @@ public class UrlConstant {
     public static final String GET_PHONE_BY_SCREEN = PRE_FIX+ "/screen";
     public static final String GET_PHONE_BY_ID = PRE_FIX+ "/id";
     public static final String GET_PHONE_BY_PRICE_RANGE = PRE_FIX+ "/priceRange";
-    public static final String UPDATE_PHONE = PRE_FIX;
-    public static final String DELETE_PHONE = PRE_FIX;
+    public static final String UPDATE_PHONE =AUTH +  PRE_FIX;
+    public static final String DELETE_PHONE =AUTH +  PRE_FIX;
     private Phone() {}
   }
 
