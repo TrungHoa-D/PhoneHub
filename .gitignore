@@ -1,0 +1,24 @@
+# Ignore build output
+BE/target/
+BE/bin/
+
+# Ignore IDE config files
+BE/.classpath
+BE/.project
+BE/.factorypath
+BE/.settings/
+
+# Ignore generated sources
+BE/target/generated-sources/
+
+# Ignore compiled class files
+BE/**/*.class
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore logs, temp
+*.log
+*.tmp
+*.swp
