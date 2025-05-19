@@ -196,7 +196,7 @@ export const usePhoneStore = defineStore('phone', {
     },
     async updatePhone(editedPhone) {
       try {
-        const response = await api.put('/phone', editedPhone);
+        const response = await api.put('/admin/phone', editedPhone);
 
         return response;
       } catch (error) {
@@ -205,7 +205,7 @@ export const usePhoneStore = defineStore('phone', {
     },
     async addNewPhone(newPhone) {
       try {
-        const response = await api.post('/phone', newPhone);
+        const response = await api.post('/admin/phone', newPhone);
 
         return response;
       } catch (error) {
@@ -213,7 +213,7 @@ export const usePhoneStore = defineStore('phone', {
       }
     },
     async deletePhone(id) {
-      const response = await api.delete('/phone', { params: { phoneId: id } });
+      const response = await api.delete('/admin/phone', { params: { phoneId: id } });
       return response;
     }
   }
