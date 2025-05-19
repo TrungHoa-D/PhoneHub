@@ -11,7 +11,7 @@ const message = useMessage();
 
 const signOutHandler = () => {
   userStore.logout();
-  router.push('/sign-in');
+  router.push('/');
   message.success('Đăng xuất thành công!');
 };
 </script>
