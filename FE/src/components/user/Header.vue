@@ -1,13 +1,18 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue';
 import { useRouter } from 'vue-router';
+import { useUserStore } from '@/stores/userStore';
 
 import heartIcon from '@assets/icons/heart.svg';
 import logOutIcon from '@assets/icons/logout.svg';
 
+import AppButton from './AppButton.vue';
+
+const userStore = useUserStore();
 const router = useRouter();
 const toggle = ref(false);
 const settingRef = ref(null);
+const profile = ref(null);
 
 const toggleSetting = () => {
   toggle.value = !toggle.value;
@@ -29,8 +34,10 @@ const handleClickOutside = (event) => {
   }
 };
 
-onMounted(() => {
+onMounted(async () => {
   document.addEventListener('click', handleClickOutside);
+  await userStore.getProfile();
+  profile.value = userStore.username;
 });
 
 onUnmounted(() => {
@@ -51,15 +58,20 @@ onUnmounted(() => {
         <router-link to="/compare">So sánh</router-link>
       </nav>
     </div>
-    <!-- <div class="header--right">
-      <div class="profile" @click.stop="toggleSetting">
-        <img src="../../assets/icons/user.svg" alt="" />
+    <div class="header--right">
+      <AppButton @click="router.push('/admin/dashboard')" v-if="!profile">Đăng nhập</AppButton>
+
+      <div class="profile-infor" v-else>
+        <div class="profile">
+          <img src="../../assets/icons/user.svg" alt="" />
+        </div>
+        <span>{{ profile }}</span>
       </div>
-      <div class="profile-settings" v-if="toggle" ref="settingRef">
+      <!-- <div class="profile-settings" v-if="toggle" ref="settingRef">
         <p @click="selectOption"><img :src="heartIcon" alt="" /><a>Danh sách yêu thích</a></p>
         <p @click="selectOption('log-out')"><img :src="logOutIcon" alt="" /><a>Đăng xuất</a></p>
-      </div>
-    </div> -->
+      </div> -->
+    </div>
   </header>
 </template>
 
@@ -108,6 +120,11 @@ header {
   }
   .header--right {
     position: relative;
+    .profile-infor {
+      display: flex;
+      gap: 4px;
+      align-items: center;
+    }
     .profile {
       width: 24px;
       height: 24px;

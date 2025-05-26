@@ -1,18 +1,35 @@
 import { defineStore } from 'pinia';
+import { api } from '@api/axios';
 
 export const useUserStore = defineStore('user', {
   state: () => ({
     token: '',
-    username: 'Admin',
-    password: 'Abc@12345'
+    username: ''
   }),
   actions: {
     async login(body) {
       const { username, password } = body;
-      if (username === this.username && password === this.password) {
-        this.token = localStorage.setItem('token', 'group-1-ptpmhdv');
-        return true;
-      } else return false;
+      try {
+        const res = await api.post('/auth/login', { emailOrPhone: username, password });
+
+        const data = res.data.data;
+        console.log(data);
+        this.token = data.accessToken;
+        localStorage.setItem('token', this.token);
+
+        return data;
+      } catch (error) {
+        return error;
+      }
+    },
+    async getProfile() {
+      try {
+        const res = await api.get('/user/current');
+        this.username = res.data.data.username;
+        return res.data.data;
+      } catch (error) {
+        return error;
+      }
     },
     logout() {
       localStorage.removeItem('token');

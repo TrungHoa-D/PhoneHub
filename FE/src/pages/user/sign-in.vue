@@ -24,11 +24,14 @@ const body = reactive({
 });
 
 const signInHandler = async () => {
-  const result = await userStore.login(body);
-  if (result) {
-    message.success('Đăng nhập thành công!');
-    router.push({ name: 'Dashboard' });
-  } else {
+  try {
+    const result = await userStore.login(body);
+    console.log(result);
+    if (result) {
+      message.success('Đăng nhập thành công!');
+      router.push({ name: 'Dashboard' });
+    }
+  } catch (error) {
     message.error('Đăng nhập thất bại!');
   }
 };
