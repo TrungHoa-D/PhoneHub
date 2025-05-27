@@ -12,11 +12,14 @@ public class UrlConstant {
 
   public static class User {
     private static final String PRE_FIX = "/user";
+    private static final String AUTH = "/admin";
 
-    public static final String GET_USERS = PRE_FIX;
-    public static final String GET_USER = PRE_FIX + "/{userId}";
+    public static final String GET_USERS =AUTH + PRE_FIX;
+    public static final String GET_USER =AUTH +  PRE_FIX + "/{userId}";
     public static final String GET_CURRENT_USER = PRE_FIX + "/current";
-
+    public static final String CREATE_USER =AUTH +  PRE_FIX;
+    public static final String UPDATE_USER =AUTH +  PRE_FIX + "/{userId}";
+    public static final String DELETE_USER =AUTH +  PRE_FIX + "/{userId}";
     private User() {
     }
   }

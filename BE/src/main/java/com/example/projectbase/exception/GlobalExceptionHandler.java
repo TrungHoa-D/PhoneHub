@@ -6,8 +6,6 @@ import com.example.projectbase.constant.ErrorMessage;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.validator.internal.engine.path.PathImpl;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.http.HttpStatus;
@@ -115,6 +113,12 @@ public class GlobalExceptionHandler {
     String message = messageSource.getMessage(ex.getMessage(), ex.getParams(), LocaleContextHolder.getLocale());
     log.error(message, ex);
     return VsResponseUtil.error(ex.getStatus(), message);
+  }
+
+  @ExceptionHandler(UsernameExistedException.class)
+  public ResponseEntity<String> handleUsernameExistedException(UsernameExistedException ex) {
+    log.error(ex.getMessage(), ex);
+    return ResponseEntity.ok(ex.getMessage());
   }
 
 }
