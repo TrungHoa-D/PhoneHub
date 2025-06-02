@@ -42,4 +42,15 @@ public class UrlConstant {
     private Phone() {}
   }
 
+  public static class Review{
+    private static final String PRE_FIX = "/review";
+    public static final String GET_ALL_REVIEW = PRE_FIX;
+    public static final String GET_REVIEW_BY_ID = PRE_FIX + "/id";
+    public static final String GET_REVIEW_BY_USER_ID = PRE_FIX + "/user";
+    public static final String GET_REVIEW_BY_PHONE_ID = PRE_FIX + "/phone";
+    public static final String CREATE_REVIEW = PRE_FIX + "/review";
+    public static final String UPDATE_REVIEW = PRE_FIX + "/review";
+    public static final String DELETE_REVIEW = PRE_FIX + "/review";
+  }
+
 }

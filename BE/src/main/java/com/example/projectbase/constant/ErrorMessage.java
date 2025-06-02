@@ -12,7 +12,8 @@ public class ErrorMessage {
   public static final String INVALID_FORMAT_SOME_THING_FIELD = "invalid.general.format";
   public static final String INVALID_SOME_THING_FIELD_IS_REQUIRED = "invalid.general.required";
   public static final String NOT_BLANK_FIELD = "invalid.general.not-blank";
-  public static final String INVALID_FORMAT_PASSWORD = "invalid.password-format";
+  public static final String INVALID_FORMAT_PASSWORD = "invalid.rating";
+  public static final String INVALID_RATING = "invalid.password-format";
   public static final String INVALID_DATE = "invalid.date-format";
   public static final String INVALID_DATE_FEATURE = "invalid.date-future";
   public static final String INVALID_DATETIME = "invalid.datetime-format";
@@ -32,7 +33,12 @@ public class ErrorMessage {
   }
 
   public static class Phone{
-    public static final String ERR_NOT_FOUND_ID = "exception.user.phone.not.found.id";
+    public static final String ERR_NOT_FOUND_ID = "exception.phone.not.found.id";
+  }
+
+  public static class Review{
+    public static final String ERR_NOT_FOUND_ID = "exception.review.not.found.id";
+    public static final String ERR_REVIEW_EXISTED = "exception.review.already.existed";
   }
 
 }
