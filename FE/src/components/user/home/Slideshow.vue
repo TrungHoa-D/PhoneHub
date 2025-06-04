@@ -47,7 +47,7 @@ onMounted(async () => {
   await phoneStore.getPhone();
   phoneList.value = phoneStore.allPhones;
 
-  randomIndex.value = Math.floor(Math.random() * phoneList.value.length);
+  randomIndex.value = Math.floor(Math.random() * 50);
   randomPhoneList.value = phoneList.value.slice(randomIndex.value, randomIndex.value + 7);
 
   gsap.from(slides.value, {
@@ -66,7 +66,7 @@ onMounted(async () => {
           <p class="name">{{ phone.name }}</p>
           <p class="brand">Brand: {{ phone.brand }}</p>
           <p class="cost">
-            Cost: <span v-if="phone.cost === -1">Không có giá</span
+            Cost: <span v-if="phone.cost === -1">Hết hàng</span
             ><span v-else>{{ formatTooltip(phone.cost) }}</span>
           </p>
           <AppButton @click="viewDetailPhone(phone.name, phone.id)">Xem chi tiết</AppButton>

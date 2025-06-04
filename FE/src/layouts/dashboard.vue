@@ -22,11 +22,10 @@ import Sidebar from '@/components/admin/Sidebar.vue';
   display: grid;
   grid-template-columns: 300px 1fr;
   height: fit-content;
-  overflow: hidden;
+  overflow: auto; /* Thay đổi từ hidden thành auto */
   .sidebar-wrap {
     grid-column: 1 / 2;
     padding: 24px 8px 24px 48px;
-    // border-right: 1px solid;
     position: relative;
     -webkit-box-shadow: 0px 0px 34px -8px rgba(122, 122, 122, 1);
     -moz-box-shadow: 0px 0px 34px -8px rgba(122, 122, 122, 1);
@@ -36,6 +35,7 @@ import Sidebar from '@/components/admin/Sidebar.vue';
     grid-column: 2 / 3;
     padding: 32px;
     background-color: #e7eaf0;
+    min-height: calc(100vh - 95px); /* 95px là chiều cao của Header */
   }
 }
 </style>

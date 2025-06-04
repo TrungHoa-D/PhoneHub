@@ -52,7 +52,7 @@ const addComparePhone = (phone) => {
     <p class="brand">{{ phone.brand }}</p>
     <p class="name" @click="viewDetailPhone">{{ phone.name }}</p>
     <p class="price" :class="{ 'not-price': phone.cost === -1 }">
-      <span v-if="phone.cost === -1">Không có giá</span>
+      <span v-if="phone.cost === -1">Hết hàng</span>
       <span v-else>{{ formatTooltip(phone.cost) }}</span>
     </p>
     <AppButton class="custome-btn" @click="addComparePhone(phone)">So sánh</AppButton>

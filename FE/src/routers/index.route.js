@@ -14,6 +14,11 @@ const routes = [
         path: 'phones-list',
         name: 'PhonesList',
         component: () => import('@/pages/admin/phones-list.vue')
+      },
+      {
+        path: 'user-management',
+        name: 'UserManagement',
+        component: () => import('@/pages/admin/user_management.vue')
       }
     ]
   },
@@ -92,16 +97,27 @@ const whiteListByName = ['Home', 'Brands', 'Phone', 'Search', 'Compare'];
 const isWhiteList = (to) => {
   return whiteListByPath.includes(to.path) || whiteListByName.includes(to.name);
 };
-
 const navigationGuard = (router) => {
   router.beforeEach(async (to, _from) => {
-    if (!localStorage.getItem('token')) {
+    const token = localStorage.getItem('token');
+
+    if (!token) {
       if (isWhiteList(to)) return true;
       return '/sign-in';
     }
 
-    if (to.path === '/sign-in') return '/';
+    if (to.path === '/sign-in') {
+      return '/admin/dashboard'; // Redirect về dashboard nếu đã đăng nhập
+    }
+
+    if (to.path.startsWith('/admin') && !token) {
+      return '/sign-in'; // Chặn truy cập admin nếu không có token
+    }
+
+    return true; // Cho phép tiếp tục nếu không có điều kiện nào khớp
   });
 };
 
 navigationGuard(router);
+
+

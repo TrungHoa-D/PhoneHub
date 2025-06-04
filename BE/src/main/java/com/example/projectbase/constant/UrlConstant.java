@@ -12,11 +12,14 @@ public class UrlConstant {
 
   public static class User {
     private static final String PRE_FIX = "/user";
+    private static final String AUTH = "/admin";
 
-    public static final String GET_USERS = PRE_FIX;
-    public static final String GET_USER = PRE_FIX + "/{userId}";
+    public static final String GET_USERS =AUTH + PRE_FIX;
+    public static final String GET_USER =AUTH +  PRE_FIX + "/{userId}";
     public static final String GET_CURRENT_USER = PRE_FIX + "/current";
-
+    public static final String CREATE_USER =AUTH +  PRE_FIX;
+    public static final String UPDATE_USER =AUTH +  PRE_FIX + "/{userId}";
+    public static final String DELETE_USER =AUTH +  PRE_FIX + "/{userId}";
     private User() {
     }
   }
@@ -37,6 +40,17 @@ public class UrlConstant {
     public static final String UPDATE_PHONE =AUTH +  PRE_FIX;
     public static final String DELETE_PHONE =AUTH +  PRE_FIX;
     private Phone() {}
+  }
+
+  public static class Review{
+    private static final String PRE_FIX = "/review";
+    public static final String GET_ALL_REVIEW = PRE_FIX;
+    public static final String GET_REVIEW_BY_ID = PRE_FIX + "/id";
+    public static final String GET_REVIEW_BY_USER_ID = PRE_FIX + "/user";
+    public static final String GET_REVIEW_BY_PHONE_ID = PRE_FIX + "/phone";
+    public static final String CREATE_REVIEW = PRE_FIX + "/review";
+    public static final String UPDATE_REVIEW = PRE_FIX + "/review";
+    public static final String DELETE_REVIEW = PRE_FIX + "/review";
   }
 
 }

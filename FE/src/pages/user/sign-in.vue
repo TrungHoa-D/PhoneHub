@@ -27,7 +27,9 @@ const signInHandler = async () => {
   try {
     const result = await userStore.login(body);
     console.log(result);
-    if (result) {
+    if (result.status == 401) {
+      message.error('Đăng nhập thất bại!');
+    } else {
       message.success('Đăng nhập thành công!');
       router.push({ name: 'Dashboard' });
     }

@@ -59,14 +59,7 @@ onUnmounted(() => {
       </nav>
     </div>
     <div class="header--right">
-      <AppButton @click="router.push('/admin/dashboard')" v-if="!profile">Đăng nhập</AppButton>
-
-      <div class="profile-infor" v-else>
-        <div class="profile">
-          <img src="../../assets/icons/user.svg" alt="" />
-        </div>
-        <span>{{ profile }}</span>
-      </div>
+      <AppButton @click="router.push('/admin/dashboard')">Đăng nhập</AppButton>
       <!-- <div class="profile-settings" v-if="toggle" ref="settingRef">
         <p @click="selectOption"><img :src="heartIcon" alt="" /><a>Danh sách yêu thích</a></p>
         <p @click="selectOption('log-out')"><img :src="logOutIcon" alt="" /><a>Đăng xuất</a></p>

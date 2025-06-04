@@ -1,5 +1,6 @@
 package com.example.projectbase.security;
 
+import com.example.projectbase.constant.RoleConstant;
 import com.example.projectbase.security.jwt.JwtAuthenticationEntryPoint;
 import com.example.projectbase.security.jwt.JwtAuthenticationFilter;
 import com.example.projectbase.service.impl.CustomUserDetailsServiceImpl;
@@ -53,6 +54,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         .antMatchers("/api/v1/auth/**").permitAll()
         .antMatchers("/api/v1/phone/**").permitAll()
             .antMatchers("/api/v1/admin/**").authenticated()
+            .antMatchers("/api/v1/review/**").authenticated()
         .anyRequest().permitAll()
         .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
     http.exceptionHandling().authenticationEntryPoint(new JwtAuthenticationEntryPoint());
