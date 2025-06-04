@@ -1,10 +1,13 @@
 package com.example.projectbase.domain.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Nationalized;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -83,6 +86,11 @@ public class Phone {
     @ManyToOne
     @JoinColumn(name = "otherInfor_id", foreignKey = @ForeignKey(name = "FK_PHONE_OTHERINFOR"))
     private OtherInfor otherInfor;
+
+    //Link to table Review
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "phone")
+    @JsonIgnore
+    private Set<Review> reviews = new HashSet<>();
 
     @Override
     public String toString() {

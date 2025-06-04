@@ -23,7 +23,7 @@ onMounted(async () => {
   await phoneStore.getPhone();
   phoneList.value = phoneStore.allPhones;
 
-  randomIndex.value = Math.floor(Math.random() * phoneList.value.length);
+  randomIndex.value = Math.floor(Math.random() * 150);
   randomPhoneList.value = phoneList.value.slice(randomIndex.value, randomIndex.value + 8);
 
   gsap.from(bestSellerListRef.value, {

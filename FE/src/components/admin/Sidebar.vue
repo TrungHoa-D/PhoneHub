@@ -1,7 +1,17 @@
 <script setup>
+import { onMounted, ref } from 'vue';
 import { useRoute } from 'vue-router';
 
+import { useUserStore } from '@/stores/userStore';
+
+const userStore = useUserStore();
 const route = useRoute();
+const role = ref('');
+
+onMounted(async () => {
+  await userStore.getProfile();
+  role.value = userStore.role;
+});
 </script>
 
 <template>
@@ -10,17 +20,28 @@ const route = useRoute();
       <div class="icon" :class="{ active: route.path === '/admin/dashboard' }">
         <img src="../../assets/icons/rightArrow.svg" alt="" />
       </div>
-      <router-link to="/admin/dashboard" :class="{ active: route.path === '/admin/dashboard' }"
-        >Trang tổng quan</router-link
-      >
+      <router-link to="/admin/dashboard" :class="{ active: route.path === '/admin/dashboard' }">
+        Trang tổng quan
+      </router-link>
     </div>
     <div>
       <div class="icon" :class="{ active: route.path === '/admin/phones-list' }">
         <img src="../../assets/icons/rightArrow.svg" alt="" />
       </div>
-      <router-link to="/admin/phones-list" :class="{ active: route.path === '/admin/phones-list' }"
-        >Danh sách điện thoại</router-link
+      <router-link to="/admin/phones-list" :class="{ active: route.path === '/admin/phones-list' }">
+        Danh sách điện thoại
+      </router-link>
+    </div>
+    <div v-if="role == 'ROLE_ADMIN'">
+      <div class="icon" :class="{ active: route.path === '/admin/user-management' }">
+        <img src="../../assets/icons/rightArrow.svg" alt="" />
+      </div>
+      <router-link
+        to="/admin/user-management"
+        :class="{ active: route.path === '/admin/user-management' }"
       >
+        Quản lý tài khoản
+      </router-link>
     </div>
   </div>
 </template>
