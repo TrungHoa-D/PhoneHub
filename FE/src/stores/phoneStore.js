@@ -157,7 +157,7 @@ export const usePhoneStore = defineStore('phone', {
         });
 
         const total = {
-          range: `${range.lowestPrice !== -1 ? formatCurrency(range.lowestPrice) + '-' + formatCurrency(range.highestPrice) : 'Không có giá'}`,
+          range: `${range.lowestPrice !== -1 ? formatCurrency(range.lowestPrice) + '-' + formatCurrency(range.highestPrice) : 'Hết hàng'}`,
           count: response.data.data.length
         };
 

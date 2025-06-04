@@ -82,7 +82,7 @@ onMounted(async () => {
       <p class="brand">{{ detailPhone?.brand }}</p>
       <p class="name">{{ detailPhone?.name }}</p>
       <p class="price" :class="{ 'not-price': detailPhone?.cost === -1 }">
-        <span v-if="detailPhone?.cost === -1">Không có giá</span>
+        <span v-if="detailPhone?.cost === -1">Hết hàng</span>
         <span v-else>{{ formatTooltip(detailPhone?.cost) }}</span>
       </p>
       <div>

@@ -4,7 +4,8 @@ import { api } from '@api/axios';
 export const useUserStore = defineStore('user', {
   state: () => ({
     token: '',
-    username: ''
+    username: '',
+    role: ''
   }),
   actions: {
     async login(body) {
@@ -13,7 +14,6 @@ export const useUserStore = defineStore('user', {
         const res = await api.post('/auth/login', { emailOrPhone: username, password });
 
         const data = res.data.data;
-        console.log(data);
         this.token = data.accessToken;
         localStorage.setItem('token', this.token);
 
@@ -26,6 +26,7 @@ export const useUserStore = defineStore('user', {
       try {
         const res = await api.get('/user/current');
         this.username = res.data.data.username;
+        this.role = res.data.data.roleName;
         return res.data.data;
       } catch (error) {
         return error;

@@ -113,7 +113,7 @@ onMounted(() => {
           <tr>
             <td>Giá</td>
             <td v-for="(phone, index) in phoneList" :key="index">
-              <span v-if="phone.cost === -1">Không có giá</span>
+              <span v-if="phone.cost === -1">Hết hàng</span>
               <span v-else>{{ formatTooltip(phone.cost) }}</span>
               <span class="arrow">
                 <img v-if="extractNumericValue(phone.cost) === maxValue('cost')" :src="upArrow" />

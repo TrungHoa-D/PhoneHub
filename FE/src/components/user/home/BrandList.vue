@@ -16,7 +16,7 @@ gsap.registerPlugin(ScrollTrigger);
 const phoneStore = usePhoneStore();
 const brandList = [
   {
-    brand: 'Iphone',
+    brand: 'Apple',
     img: '/i/p/iphone-16-pro-max.png'
   },
   {

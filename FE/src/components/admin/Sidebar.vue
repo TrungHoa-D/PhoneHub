@@ -1,7 +1,17 @@
 <script setup>
+import { onMounted, ref } from 'vue';
 import { useRoute } from 'vue-router';
 
+import { useUserStore } from '@/stores/userStore';
+
+const userStore = useUserStore();
 const route = useRoute();
+const role = ref('');
+
+onMounted(async () => {
+  await userStore.getProfile();
+  role.value = userStore.role;
+});
 </script>
 
 <template>
@@ -22,11 +32,14 @@ const route = useRoute();
         Danh sách điện thoại
       </router-link>
     </div>
-    <div>
+    <div v-if="role == 'ROLE_ADMIN'">
       <div class="icon" :class="{ active: route.path === '/admin/user-management' }">
         <img src="../../assets/icons/rightArrow.svg" alt="" />
       </div>
-      <router-link to="/admin/user-management" :class="{ active: route.path === '/admin/user-management' }">
+      <router-link
+        to="/admin/user-management"
+        :class="{ active: route.path === '/admin/user-management' }"
+      >
         Quản lý tài khoản
       </router-link>
     </div>
